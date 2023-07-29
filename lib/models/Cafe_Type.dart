@@ -15,7 +15,7 @@ class CafeType extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(url),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           name,
           style: const TextStyle(

@@ -199,7 +199,22 @@ class _CartScrState extends State<CartScr> {
                 child: ListView.separated(
                   itemCount: widget.listDetailInfo.length,
                   itemBuilder: (context, index){
-                    return listSlide(index, shotName, selectName, sizeName);
+                    return Dismissible(
+                      direction: DismissDirection.startToEnd,
+                      key: UniqueKey(),
+                      background: Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.all(10),
+                        color: Colors.red,
+                        child: Icon(Icons.delete_outline_rounded, color: Colors.white, size: 40),
+                      ),
+                      child: listSlide(index, shotName, selectName, sizeName),
+                      onDismissed: (direction){
+                        setState(() {
+                          widget.listDetailInfo.removeAt(index);
+                        });
+                      },
+                    );
                   },
                   separatorBuilder: (context, index) => const Divider(),
                 ),

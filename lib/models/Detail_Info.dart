@@ -54,4 +54,24 @@ class DetailInfo {
     return -1;
   }
 
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is DetailInfo &&
+        this.name == other.name &&
+        this.type == other.type &&
+        this.nums == other.nums &&
+        this.shot == other.shot &&
+        this.select == other.select &&
+        this.size == other.size &&
+        this.ice == other.ice &&
+        this.price == other.price;
+  }
+
+  bool similarName(DetailInfo other){
+    if (this.name == other.name){
+      return true;
+    }
+    return false;
+  }
 }

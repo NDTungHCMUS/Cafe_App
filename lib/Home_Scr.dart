@@ -2,17 +2,22 @@ import 'package:cafe_app/Loyalty_Card.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_app/data/Cafe_Type_Store.dart';
 import 'package:cafe_app/models/Cafe_Type_Grid.dart';
-
+import 'package:cafe_app/models/User.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 class HomeScr extends StatefulWidget {
-  const HomeScr({required this.numberLoyaltyCard, required this.toDetailScr, super.key});
+  const HomeScr({required this.toMyOrder, required this.toReward, required this.myUser, required this.toProfileScr, required this.numberLoyaltyCard, required this.toCartScr, required this.toDetailScr, super.key});
 
   final void Function(int type) toDetailScr;
-
+  final void Function() toProfileScr;
+  final void Function() toCartScr;
+  final void Function() toMyOrder;
+  final void Function() toReward;
+  final User myUser;
   final int numberLoyaltyCard;
 
 
   State<HomeScr> createState() {
-    return _HomeScrState();
+    return _HomeScrState(); 
   }
   
 }
@@ -25,7 +30,7 @@ class _HomeScrState extends State<HomeScr> {
 
   @override
   Widget build(context) {
-    final int nums = widget.numberLoyaltyCard;
+    int nums = widget.numberLoyaltyCard;
     String numberLoyaltyCardStr = '$nums' + '/8';
 
     // List Loyalty Card
@@ -44,6 +49,7 @@ class _HomeScrState extends State<HomeScr> {
     }
 
     return Scaffold(
+      
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -66,11 +72,11 @@ class _HomeScrState extends State<HomeScr> {
                                 fontSize: 16,
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 5),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
                             child: Text(
-                              'Dinh Tung',
-                              style: TextStyle(
+                              widget.myUser.fullName,
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -82,7 +88,7 @@ class _HomeScrState extends State<HomeScr> {
                       Row(
                         children: [
                           OutlinedButton(
-                            onPressed: (){},
+                            onPressed: widget.toCartScr,
                             style: OutlinedButton.styleFrom(
                               shape: RoundedRectangleBorder( // Xác định hình dạng của viền
                                 borderRadius: BorderRadius.circular(10), // Độ cong của viền
@@ -99,7 +105,7 @@ class _HomeScrState extends State<HomeScr> {
                           ),
                           const SizedBox(width: 20),
                           OutlinedButton(
-                            onPressed: (){},
+                            onPressed: widget.toProfileScr,
                             style: OutlinedButton.styleFrom(
                               shape: RoundedRectangleBorder( // Xác định hình dạng của viền
                                 borderRadius: BorderRadius.circular(10), // Độ cong của viền
@@ -192,6 +198,7 @@ class _HomeScrState extends State<HomeScr> {
                 
                 const SizedBox(height: 20),
 
+                // List Cafe
                 Expanded(
                   child: SizedBox(
                     height: 10,
@@ -223,11 +230,6 @@ class _HomeScrState extends State<HomeScr> {
                     ),
                   ),
                 ),
-                
-
-
-                // ListView Coffee
-                
             ]
           ),
         ),
