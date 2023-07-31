@@ -24,4 +24,26 @@ class Order {
       point: point ?? this.point,
     );
   }
+
+  factory Order.fromJson(Map<String, dynamic> json) {
+    return Order(
+      detailInfo: DetailInfo.fromJson(json['Detail']),
+      month: json['month'],
+      day: json['day'],
+      hour: json['hour'],
+      minute: json['minute'],
+      point: json['point'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'Detail': detailInfo.toJson(),
+      'month': month,
+      'day': day,
+      'hour': hour,
+      'minute': minute,
+      'point': point,
+    };
+  }
 }

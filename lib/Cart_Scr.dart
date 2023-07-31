@@ -3,8 +3,10 @@ import 'package:cafe_app/models/Detail_Info.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CartScr extends StatefulWidget {
-  CartScr({required this.toSuccess, required this.toDetail, required this.listDetailInfo, super.key});
+  CartScr({required this.cartBack, required this.toDetail, required this.toSuccess, required this.toHome, required this.listDetailInfo, super.key});
+  int cartBack;
   void Function() toDetail;
+  void Function() toHome;
   void Function() toSuccess;
   List<DetailInfo> listDetailInfo;
 
@@ -12,6 +14,8 @@ class CartScr extends StatefulWidget {
     return _CartScrState();
   }
 }
+
+
 
 
 class _CartScrState extends State<CartScr> {
@@ -150,7 +154,7 @@ class _CartScrState extends State<CartScr> {
     for (int i = 0; i < widget.listDetailInfo.length; i++){
       totalPrice += widget.listDetailInfo[i].price;
     }
-
+    
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -162,7 +166,7 @@ class _CartScrState extends State<CartScr> {
               Row(
                 children: [
                   OutlinedButton(
-                    onPressed: widget.toDetail,
+                    onPressed: (widget.cartBack == 0) ? widget.toHome : widget.toDetail,
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder( // Xác định hình dạng của viền
                         borderRadius: BorderRadius.circular(10), // Độ cong của viền

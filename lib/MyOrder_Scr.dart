@@ -28,7 +28,6 @@ class _MyOrderScrState extends State<MyOrderScr>  {
   }
   @override
   Widget build(context) {
-    print("In Order " + widget.numberLoyaltyCard.toString());
     List<Color?> textColors = List<Color?>.filled(2, null);
     List<Color?> rectangleColors = List<Color?>.filled(2, null);
     if (selected == 0) {

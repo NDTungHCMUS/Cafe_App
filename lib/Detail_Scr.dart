@@ -6,7 +6,7 @@ class DetailScr extends StatefulWidget {
   DetailScr({required this.toHomeScr, required this.toCartScr, required this.type, required this.detailInfo, super.key});
 
   final void Function() toHomeScr;
-  final void Function() toCartScr;
+  final void Function(int) toCartScr;
   final int type;
   DetailInfo detailInfo;
 
@@ -181,7 +181,7 @@ class _DetailScrState extends State<DetailScr> {
                   const SizedBox(width: 90),
 
                   OutlinedButton(
-                    onPressed: (){},
+                    onPressed: (){widget.toCartScr(0);},
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder( // Xác định hình dạng của viền
                         borderRadius: BorderRadius.circular(10), // Độ cong của viền
@@ -486,7 +486,7 @@ class _DetailScrState extends State<DetailScr> {
 
               // Add to Cart
               TextButton(
-                onPressed: widget.toCartScr,
+                onPressed: (){widget.toCartScr(1);},
                 style: TextButton.styleFrom(
                   backgroundColor: Color.fromARGB(255, 9, 51, 49),
                   shape: RoundedRectangleBorder( // Xác định hình dạng của viền

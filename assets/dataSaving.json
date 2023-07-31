@@ -1,0 +1,188 @@
+{
+    "Loyalty Card": 4,
+    "Total Point" : 40,
+    "User":
+    {
+        "fullName" : "Nguyen Dinh Tung",
+        "phoneNumber" : "0935976367",
+        "email" : "ndtung21@gmail.com",
+        "address" : "Binh Chanh district, HCM city",
+        "imagePath" : "assets/image/face.png"
+    },
+    "List Items" : [
+        {
+            "name" : "Americano",
+            "type" : 0,
+            "nums" : 2,
+            "shot" : 1,
+            "select" : 1,
+            "size" : 1,
+            "ice" : 0,
+            "price" : 12
+        },
+        {
+            "name" : "Capuchino",
+            "type" : 2,
+            "nums" : 2,
+            "shot" : 0,
+            "select" : 0,
+            "size" : 0,
+            "ice" : 0,
+            "price" : 2
+        }
+    ],
+    "Comments" : [
+        {
+            "name" : "Long Do",
+            "text" : "Wonderful Page",
+            "month" : "July",
+            "day" : 28,
+            "hour" : 4,
+            "minute" : 15
+        },
+        {
+            "name" : "Nghia Dang",
+            "text" : "Fast Delivery",
+            "month" : "July",
+            "day" : 26,
+            "hour" : 5,
+            "minute" : 15
+        },
+        {
+            "name" : "Khoa Hoang",
+            "text" : "Beautiful staffs",
+            "month" : "June",
+            "day" : 19,
+            "hour" : 6,
+            "minute" : 30
+        },
+        {
+            "name" : "Y Nhi",
+            "text" : "Good Food",
+            "month" : "June",
+            "day" : 12,
+            "hour" : 7,
+            "minute" : 15
+        },
+        {
+            "name" : "Phan Bach",
+            "text" : "Very good services",
+            "month" : "June",
+            "day" : 11,
+            "hour" : 5,
+            "minute" : 15
+        },
+        {
+            "name" : "William Lin",
+            "text" : "Awesome pages",
+            "month" : "June",
+            "day" : 10,
+            "hour" : 9,
+            "minute" : 15
+        }
+    ],
+    "History" : [
+        {
+            "Detail" : {
+                "name" : "Americano",
+                "type" : 0,
+                "nums" : 2,
+                "shot" : 1,
+                "select" : 1,
+                "size" : 1,
+                "ice" : 0,
+                "price" : 12
+            },
+            "month" : "July",
+            "day" : 28,
+            "hour" : 4,
+            "minute" : 15,
+            "point" : 12
+        },
+        {
+            "Detail" : {
+                "name" : "Capuchino",
+                "type" : 2,
+                "nums" : 1,
+                "shot" : 0,
+                "select" : 0,
+                "size" : 0,
+                "ice" : 0,
+                "price" : 1
+            },
+            "month" : "July",
+            "day" : 26,
+            "hour" : 5,
+            "minute" : 15,
+            "point" : 1
+        },
+        {
+            "Detail" : {
+                "name" : "Capuchino",
+                "type" : 2,
+                "nums" : 1,
+                "shot" : 0,
+                "select" : 0,
+                "size" : 0,
+                "ice" : 0,
+                "price" : 0
+            },
+            "month" : "July",
+            "day" : 23,
+            "hour" : 7,
+            "minute" : 30,
+            "point" : 0
+        },
+        {
+            "Detail" : {
+                "name" : "Flat White",
+                "type" : 1,
+                "nums" : 5,
+                "shot" : 0,
+                "select" : 0,
+                "size" : 0,
+                "ice" : 0,
+                "price" : 5
+            },
+            "month" : "July",
+            "day" : 20,
+            "hour" : 5,
+            "minute" : 15,
+            "point" : 5
+        },
+        {
+            "Detail" : {
+                "name" : "Flat White",
+                "type" : 1,
+                "nums" : 5,
+                "shot" : 0,
+                "select" : 0,
+                "size" : 0,
+                "ice" : 0,
+                "price" : 7
+            },
+            "month" : "June",
+            "day" : 20,
+            "hour" : 5,
+            "minute" : 15,
+            "point" : 7
+        },
+        {
+            "Detail" : {
+                "name" : "Flat White",
+                "type" : 1,
+                "nums" : 5,
+                "shot" : 0,
+                "select" : 0,
+                "size" : 0,
+                "ice" : 0,
+                "price" : 6
+            },
+            "month" : "June",
+            "day" : 15,
+            "hour" : 5,
+            "minute" : 15,
+            "point" : 6
+        }
+    ]
+}

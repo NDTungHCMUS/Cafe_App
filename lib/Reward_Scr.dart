@@ -223,8 +223,10 @@ class _RewardScrState extends State<RewardScr> {
 
   void updateCardAndPoint(){
     if (widget.numberLoyaltyCard >= 8) {
-      widget.numberLoyaltyCard = 0;
-      widget.totalPoint += 50;
+      double iDouble = widget.numberLoyaltyCard / 8;
+      int iInt = iDouble.toInt();
+      widget.numberLoyaltyCard -= 8 * iInt;
+      widget.totalPoint += 50 * iInt;
     }
     widget.updateLoyaltyCard(widget.numberLoyaltyCard);
     widget.updateTotalPoint(widget.totalPoint);

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:cafe_app/models/Orders.dart';
 import 'package:cafe_app/models/User.dart';
@@ -54,13 +52,15 @@ class _OrderWidgetState extends State<OrderWidget> {
   }
 
   void addLoyaltyCard(Order tmp){
-    if (tmp.detailInfo.size == 0 || tmp.detailInfo.size == 1) {
-      widget.numberLoyaltyCard += tmp.detailInfo.nums * 1;
+    if (tmp.detailInfo.price > 0){
+      if (tmp.detailInfo.size == 0 || tmp.detailInfo.size == 1) {
+        widget.numberLoyaltyCard += tmp.detailInfo.nums * 1;
+      }
+      else {
+        widget.numberLoyaltyCard += tmp.detailInfo.nums * 2;
+      }
+      widget.updateLoyaltyCardCount(widget.numberLoyaltyCard);
     }
-    else {
-      widget.numberLoyaltyCard += tmp.detailInfo.nums * 2;
-    }
-    widget.updateLoyaltyCardCount(widget.numberLoyaltyCard);
     print("Widget " + widget.numberLoyaltyCard.toString());
   }
 
@@ -70,7 +70,13 @@ class _OrderWidgetState extends State<OrderWidget> {
   }
 
   Widget buildItem(int index){
-    String dayTime = widget.listShow[index].day.toString() + " " + widget.listShow[index].month + " | " + widget.listShow[index].hour.toString() + ":" + widget.listShow[index].minute.toString() + " PM";
+    String dayTime = "";
+    if (widget.listShow[index].hour > 12){
+      dayTime = widget.listShow[index].day.toString() + " " + widget.listShow[index].month + " | " + widget.listShow[index].hour.toString() + ":" + widget.listShow[index].minute.toString() + " PM";
+    }
+    else {
+      dayTime = widget.listShow[index].day.toString() + " " + widget.listShow[index].month + " | " + widget.listShow[index].hour.toString() + ":" + widget.listShow[index].minute.toString() + " AM";
+    }
     return Container(
       child: Column(
         children: [
@@ -82,9 +88,9 @@ class _OrderWidgetState extends State<OrderWidget> {
                   color: Colors.grey,
                 )
               ),
-              const SizedBox(width: 180),
+              const SizedBox(width: 150),
               Text(
-                widget.listShow[index].detailInfo.price.toString() +  ' USD',
+                (widget.listShow[index].detailInfo.price > 0) ? widget.listShow[index].detailInfo.price.toString() +  ' USD' : 'Radeem',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,

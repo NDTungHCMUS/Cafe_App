@@ -5,13 +5,15 @@ import 'package:cafe_app/models/Cafe_Type_Grid.dart';
 import 'package:cafe_app/models/User.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 class HomeScr extends StatefulWidget {
-  const HomeScr({required this.toMyOrder, required this.toReward, required this.myUser, required this.toProfileScr, required this.numberLoyaltyCard, required this.toCartScr, required this.toDetailScr, super.key});
+  const HomeScr({required this.toCommentScr, required this.saveToJson, required this.toMyOrder, required this.toReward, required this.myUser, required this.toProfileScr, required this.numberLoyaltyCard, required this.toCartScr, required this.toDetailScr, super.key});
 
   final void Function(int type) toDetailScr;
   final void Function() toProfileScr;
   final void Function() toCartScr;
   final void Function() toMyOrder;
   final void Function() toReward;
+  final void Function() toCommentScr;
+  final void Function(void Function()) saveToJson;
   final User myUser;
   final int numberLoyaltyCard;
 
@@ -28,6 +30,18 @@ class _HomeScrState extends State<HomeScr> {
     widget.toDetailScr(type);
   }
 
+  void _saveDataAndShowSnackbar() async {
+    widget.saveToJson(() {
+    // Callback này được gọi khi quá trình lưu dữ liệu đã hoàn thành
+    // Hiển thị thông báo lưu dữ liệu thành công
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Data saved successfully.'),
+      ),
+    );
+  });
+  }
+
   @override
   Widget build(context) {
     int nums = widget.numberLoyaltyCard;
@@ -35,11 +49,18 @@ class _HomeScrState extends State<HomeScr> {
 
     // List Loyalty Card
     List<LoyaltyCard> listLoyaltyCard = [];
-    for (int i = 0; i < widget.numberLoyaltyCard; i++) {
-      listLoyaltyCard.add(LoyaltyCard(used: true));
+    if (widget.numberLoyaltyCard <= 8){
+      for (int i = 0; i < widget.numberLoyaltyCard; i++) {
+        listLoyaltyCard.add(LoyaltyCard(used: true));
+      }
+      for (int i = 0; i < 8 - widget.numberLoyaltyCard; i++){
+        listLoyaltyCard.add(LoyaltyCard(used: false));
+      }
     }
-    for (int i = 0; i < 8 - widget.numberLoyaltyCard; i++){
-      listLoyaltyCard.add(LoyaltyCard(used: false));
+    else {
+      for (int i = 0; i < 8; i++) {
+        listLoyaltyCard.add(LoyaltyCard(used: true));
+      }
     }
 
     // List Cafe Grid Items
@@ -186,14 +207,38 @@ class _HomeScrState extends State<HomeScr> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 10),
 
-                const Text(
-                  'Choose your coffee: ',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  )
+                Container(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Choose your coffee: ',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: 100),
+                      OutlinedButton(
+                        onPressed: widget.toCommentScr,
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder( // Xác định hình dạng của viền
+                            borderRadius: BorderRadius.circular(10), // Độ cong của viền
+                          ),
+                          side: const BorderSide(
+                            color: Colors.black, // Màu của viền
+                            width: 1.0, // Độ dày   của viền
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.message_outlined,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ]
+                  ),
                 ),
                 
                 const SizedBox(height: 20),

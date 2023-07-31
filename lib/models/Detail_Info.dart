@@ -74,4 +74,30 @@ class DetailInfo {
     }
     return false;
   }
+
+  factory DetailInfo.fromJson(Map<String, dynamic> json) {
+    return DetailInfo(
+      name: json['name'],
+      type: json['type'],
+      nums: json['nums'],
+      shot: json['shot'],
+      select: json['select'],
+      size: json['size'],
+      ice: json['ice'],
+      price: json['price'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'type': type,
+      'nums': nums,
+      'shot': shot,
+      'select': select,
+      'size': size,
+      'ice': ice,
+      'price': price,
+    };
+  }
 }

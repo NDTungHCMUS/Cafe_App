@@ -6,4 +6,32 @@ class User {
   String email;
   String address;
   bool isDarkMode;
+  User.empty()
+      : imagePath = '',
+        fullName = '',
+        phoneNumber = '',
+        email = '',
+        address = '',
+        isDarkMode = false;
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      fullName: json['fullName'],
+      phoneNumber: json['phoneNumber'],
+      email: json['email'],
+      address: json['address'],
+      imagePath: json['imagePath'],
+      isDarkMode: false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'fullName': fullName,
+      'phoneNumber': phoneNumber,
+      'email': email,
+      'address': address,
+      'imagePath': imagePath,
+    };
+  }
 }
